@@ -37,6 +37,7 @@ suspend fun userCheck(context: ApiContext) {
 }
 
 private fun hashPassword(password: String): String{
+
     val messageDigest = MessageDigest.getInstance("SHA-256")
     val hassBytes = messageDigest.digest(password.toByteArray(StandardCharsets.UTF_8))
     val hexString = StringBuffer()
