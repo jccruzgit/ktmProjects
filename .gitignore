@@ -1,27 +1,53 @@
-# Compiled class file
-*.class
+# Kotlin/Gradle-specific files
+*.iml
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
 
-# Log file
+# IntelliJ IDEA-specific files
+.idea/
+.idea_modules/
+*.ipr
+*.iws
+*.idea/*
+*.idea/**
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
 *.log
 
-# BlueJ files
-*.ctxt
+# Kotlin/Compose-generated files
+node_modules/
+dist/
+package-lock.json
+yarn.lock
+kobweb.conf.json
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Test reports and coverage
+test-results/
+*.html
+*.xml
+jacoco/test.exec
+coverage/
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
-.kotlin/
+# Gradle cache
+.gradle/
+build/
+bin/
