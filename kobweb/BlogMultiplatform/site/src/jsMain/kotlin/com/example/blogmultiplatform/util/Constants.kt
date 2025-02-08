@@ -1,11 +1,12 @@
-package com.rcbits.blogmultiplatform.util
+package com.example.blogmultiplatform.util
 
 object Constants {
     const val FONT_FAMILY = "Roboto"
+
 }
 
 object Res {
-    object Image {
+    object image{
         const val logo = "/logo.svg"
     }
 }
