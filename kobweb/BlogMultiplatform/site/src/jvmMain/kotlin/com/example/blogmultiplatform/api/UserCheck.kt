@@ -18,31 +18,30 @@ suspend fun userCheck(context: ApiContext) {
             context.req.body?.decodeToString()?.let { Json.decodeFromString<User>(it) }
         val user = userRequest?.let {
             context.data.getValue<MongoDB>().checkUserExistence(
-                User(userName = it.userName, password = hashPassword(it.password))
+                User(username = it.username, password = hashPassword(it.password))
             )
         }
 
         if (user != null) {
             context.res.setBodyText(
                 Json.encodeToString(
-                    UserWithoutPassword(id = user.id, userName = user.userName)
+                    UserWithoutPassword(id = user.id, username = user.username)
                 )
             )
-        }else{
+        } else {
             context.res.setBodyText(Json.encodeToString(Exception("User doesn´t exists")))
         }
     } catch (e: Exception) {
-
+        context.res.setBodyText(Json.encodeToString(Exception(e.message)))
     }
 }
 
-private fun hashPassword(password: String): String{
-
+private fun hashPassword(password: String): String {
     val messageDigest = MessageDigest.getInstance("SHA-256")
-    val hassBytes = messageDigest.digest(password.toByteArray(StandardCharsets.UTF_8))
+    val hashBytes = messageDigest.digest(password.toByteArray(StandardCharsets.UTF_8))
     val hexString = StringBuffer()
 
-    for(byte in hassBytes){
+    for (byte in hashBytes) {
         hexString.append(String.format("%02x", byte))
     }
 

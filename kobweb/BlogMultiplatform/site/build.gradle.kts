@@ -23,17 +23,22 @@ kotlin {
     configAsKobwebApplication("blogmultiplatform", includeServer = true)
 
     sourceSets {
-//        commonMain.dependencies {
-//          // Add shared dependencies between JS and JVM here
-//        }
+        all{
+            languageSettings.optIn("kotlin.experimental.Xexpect-actual-classes")
+        }
+
+        commonMain.dependencies {
+            implementation(libs.compose.runtime)
+        }
         jsMain.dependencies {
             implementation(libs.compose.runtime)
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
-            // implementation(libs.kobwebx.markdown)
             implementation(project(":worker"))
+            implementation(libs.kotlinx.serialization)
+
         }
         jvmMain.dependencies {
             compileOnly(libs.kobweb.api) // Provided by Kobweb backend at runtime

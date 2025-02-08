@@ -15,7 +15,7 @@ import org.litote.kmongo.reactivestreams.getCollection
 fun initMongoDB(context: InitApiContext) {
     System.setProperty(
         "org.litote.mongo.test.mapping.service",
-        "org.litote.mongo.serialization.SerializationClassMappingTypeService"
+        "org.litote.kmongo.serialization.SerializationClassMappingTypeService"
     )
     context.data.add(MongoDB(context))
 }
@@ -30,7 +30,7 @@ class MongoDB(val context: InitApiContext) : MongoRepository {
             userCollection
                 .find(
                     and(
-                        User::userName eq user.userName,
+                        User::username eq user.username,
                         User::password eq user.password
                     )
                 ).awaitFirst()
